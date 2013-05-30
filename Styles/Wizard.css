@@ -58,3 +58,15 @@
 .field.wizard > ol > li > a.active:after {
   border-left-color: #b6cae1;
 }
+.field.wizard > .panes > .group {
+  background-color: transparent;
+  box-shadow: none;
+  border: 0px;
+  display: block;
+}
+.field.wizard > .panes > .group > .title {
+  display: none;
+}
+.field.wizard > .panes > .group > .content {
+  display: block;
+}
