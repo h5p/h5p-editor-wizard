@@ -43,7 +43,7 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
 
     this.$item = $(this.createHtml()).appendTo($wrapper);
     this.$errors = this.$item.children('.errors');
-    var $panesWrapper = $('<div class="panes"></div>').insertBefore(this.$errors);
+    var $panesWrapper = $('<div class="h5peditor-panes"></div>').insertBefore(this.$errors);
 
     if (this.params === undefined) {
       this.params = {};
@@ -66,11 +66,17 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
    * Create HTML for the field.
    */
   C.prototype.createHtml = function () {
-    var tabs = '<ol>';
+    var tabs = '';
+
+    if (this.field.label !== 0) {
+      tabs += '<div class="h5peditor-label">' + (this.field.label === undefined ? this.field.name : this.field.label) + '</div>';
+    }
+
+    tabs += '<ol class="h5peditor-tabs">';
 
     for (var i = 0; i < this.field.fields.length; i++) {
       var field = this.field.fields[i];
-      tabs += C.createTab(i, field.label);
+      tabs += C.createTab(i, field);
     }
 
     tabs += '</ol>';
@@ -87,8 +93,8 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
   C.prototype.showTab = function ($tab) {
     var id = $tab.attr('data-id');
     this.$panes.hide().eq(id).show();
-    this.$tabs.removeClass('active');
-    $tab.addClass('active');
+    this.$tabs.removeClass('h5peditor-active');
+    $tab.addClass('h5peditor-active');
 
     // Give the poor child a chance to handle tab switching.
     if (this.children[id].setActive !== undefined) {
@@ -141,8 +147,8 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
    * @param {type} label
    * @returns {String}
    */
-  C.createTab = function (id, label) {
-    return '<li><a href="#" data-id="' + id + '">' + label + '</a></li>';
+  C.createTab = function (id, field) {
+    return '<li class="h5peditor-tab-li"><a href="#" class="h5peditor-tab-a h5peditor-tab-' + field.name.toLowerCase() + '" data-id="' + id + '">' + field.label + '</a></li>';
   };
 
   return C;
