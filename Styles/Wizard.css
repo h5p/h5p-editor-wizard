@@ -32,14 +32,14 @@ ol.h5peditor-tabs > li.h5peditor-tab-li:before {
 .field.wizard .h5peditor-tab-a {
   display: block;
   position: relative;
-  background: #f5f5f5;
+  background: #ebebeb;
   margin-right: 20px;
   padding: 5px 0 5px 24px;
   height: 20px;
   color: #666;
 }
 .field.wizard .h5peditor-tab-a:hover {
-  background: #ebebeb;
+  background: #cae1ea;
 }
 
 .field.wizard .h5peditor-tab-a:focus {
@@ -51,8 +51,8 @@ ol.h5peditor-tabs > li.h5peditor-tab-li:before {
 .field.wizard .h5peditor-tab-a:before, .field.wizard .h5peditor-tab-a:after {
   position: absolute;
   left: -10px;
-  border-top: 15px solid #f5f5f5;
-  border-bottom: 15px solid #f5f5f5;
+  border-top: 15px solid #ebebeb;
+  border-bottom: 15px solid #ebebeb;
   border-left: 10px solid transparent;
   content: "";
   width: 0;
@@ -60,20 +60,20 @@ ol.h5peditor-tabs > li.h5peditor-tab-li:before {
   top: 0;
 }
 .field.wizard .h5peditor-tab-a:hover:before, .field.wizard .h5peditor-tab-a:hover:after {
-  border-top-color: #ebebeb;
-  border-bottom-color: #ebebeb;
+  border-top-color: #cae1ea;
+  border-bottom-color: #cae1ea;
 }
 .field.wizard .h5peditor-tab-a:after {
   border-top-color: transparent;
   border-bottom-color: transparent;
-  border-left-color: #f5f5f5;
+  border-left-color: #ebebeb;
   right: -10px;
   left: auto;
 }
 .field.wizard .h5peditor-tab-a:hover:after {
   border-top-color: transparent;
   border-bottom-color: transparent;
-  border-left-color: #ebebeb;
+  border-left-color: #cae1ea;
 }
 .field.wizard .h5peditor-tab-li:first-child > .h5peditor-tab-a:before {
   border: 0;
@@ -85,16 +85,16 @@ ol.h5peditor-tabs > li.h5peditor-tab-li:before {
   margin-right: 0;
 }
 .field.wizard .h5peditor-tab-a.h5peditor-active {
-  color: #666;
-  background: #ebebeb;
+  color: #333;
+  background: #cae1ea;
   cursor: default;
 }
 .field.wizard .h5peditor-tab-a.h5peditor-active:before {
-  border-top-color: #ebebeb;
-  border-bottom-color: #ebebeb;
+  border-top-color: #cae1ea;
+  border-bottom-color: #cae1ea;
 }
 .field.wizard .h5peditor-tab-a.h5peditor-active:after {
-  border-left-color: #ebebeb;
+  border-left-color: #cae1ea;
 }
 .field.wizard .h5peditor-tab-a.h5peditor-active:hover:after {
   border-top-color: transparent;
