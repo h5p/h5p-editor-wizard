@@ -100,6 +100,12 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
     if (this.children[id].setActive !== undefined) {
       this.children[id].setActive();
     }
+
+    H5P.externalDispatcher.trigger('wizard-tab-changed', {
+      fieldName: this.field.name,
+      library: this.library,
+      tabIndex: parseInt(id)
+    });
   };
 
   /**
