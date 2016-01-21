@@ -5,7 +5,7 @@ var H5PEditor = H5PEditor || {};
  *
  * @param {jQuery} $
  */
-H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
+H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
 
   /**
    * Initialize wizard editor.
@@ -19,6 +19,9 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
   function C(parent, field, params, setValue) {
     var that = this;
 
+    // Event support
+    H5P.EventDispatcher.call(that);
+
     this.parent = parent;
     this.field = field;
     this.params = params;
@@ -30,7 +33,11 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
     parent.ready(function () {
       that.passReadies = false;
     });
-  };
+  }
+
+  // Inheritance
+  C.prototype = Object.create(EventDispatcher.prototype);
+  C.prototype.constructor = C;
 
   /**
    * Append field to wrapper.
@@ -101,10 +108,9 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
       this.children[id].setActive();
     }
 
-    H5P.externalDispatcher.trigger('wizard-tab-changed', {
-      fieldName: this.field.name,
-      library: this.library,
-      tabIndex: parseInt(id)
+    this.trigger('stepChanged', {
+      id: parseInt(id),
+      name: this.field.fields[id].name
     });
   };
 
@@ -158,4 +164,4 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($) {
   };
 
   return C;
-})(H5P.jQuery);
+})(H5P.jQuery, H5P.EventDispatcher);
