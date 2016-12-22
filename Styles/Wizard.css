@@ -112,3 +112,6 @@ ol.h5peditor-tabs > li.h5peditor-tab-li:before {
 .field.wizard > .h5peditor-panes > .group > .content {
   display: block;
 }
+.field.wizard > .h5peditor-panes > .field {
+  margin: 0;
+}
