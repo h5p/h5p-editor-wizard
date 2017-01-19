@@ -73,22 +73,14 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
    * Create HTML for the field.
    */
   C.prototype.createHtml = function () {
-    var tabs = '';
-
-    if (this.field.label !== 0) {
-      tabs += '<div class="h5peditor-label">' + (this.field.label === undefined ? this.field.name : this.field.label) + '</div>';
-    }
-
-    tabs += '<ol class="h5peditor-tabs">';
-
+    var tabs = '<ol class="h5peditor-tabs">';
     for (var i = 0; i < this.field.fields.length; i++) {
       var field = this.field.fields[i];
       tabs += C.createTab(i, field);
     }
-
     tabs += '</ol>';
 
-    return H5PEditor.createItem(this.field.widget, tabs);
+    return H5PEditor.createFieldMarkup(this.field, tabs);
   };
 
   /**
