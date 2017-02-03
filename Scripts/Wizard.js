@@ -47,7 +47,6 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
    */
   C.prototype.appendTo = function ($wrapper) {
     var that = this;
-
     this.$item = $(this.createHtml()).appendTo($wrapper);
     this.$errors = this.$item.children('.h5p-errors');
     var $panesWrapper = $('<div class="h5peditor-panes"></div>').insertBefore(this.$errors);
@@ -59,7 +58,6 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
     H5PEditor.processSemanticsChunk(this.field.fields, this.params, $panesWrapper, this);
 
     this.$panes = $panesWrapper.children();
-
     this.$tabs = this.$item.find('ol > li > a').click(function () {
       that.showTab($(this));
       return false;
@@ -67,6 +65,25 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
     this.$tabs.eq(0).click();
 
     this.$panes.children('.h5peditor-label').hide();
+
+    var $navButtonsWrapper = $('<div class="h5peditor-wizard-navigation-buttons"></div>').appendTo(this.$item);
+    
+    var $prevButton = $('<div class="nav-button-prev" data-id="0"></div>')
+      .append($('<span>' + C.t('previousStep') + '</span>'))
+      .append($('<span>' + this.field.fields[0].label + '</span>'))
+    .click(function () {
+      var currentTabId = $(this).attr('data-id');
+      that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
+    }).appendTo($navButtonsWrapper)
+      .hide();
+
+    var $nextButton = $('<div class="nav-button-next" data-id="1"></div>')
+      .append($('<span>' + C.t('nextStep') + '</span>'))
+      .append($('<span>' + this.field.fields[1].label + '</span>'))
+    .click(function () {
+      var currentTabId = $(this).attr('data-id');
+      that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
+    }).appendTo($navButtonsWrapper);
   };
 
   /**
@@ -122,6 +139,17 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
   };
 
   /**
+   * Local translate function.
+   *
+   * @param {Atring} key
+   * @param {Object} params
+   * @returns {@exp;H5PEditor@call;t}
+   */
+  C.t = function (key, params) {
+    return H5PEditor.t('H5PEditor.Wizard', key, params);
+  };
+
+  /**
    * Collect functions to execute once the tree is complete.
    *
    * @param {function} ready
@@ -152,8 +180,19 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
    * @returns {String}
    */
   C.createTab = function (id, field) {
-    return '<li class="h5peditor-tab-li"><a href="#" class="h5peditor-tab-a h5peditor-tab-' + field.name.toLowerCase() + '" data-id="' + id + '">' + field.label + '</a></li>';
+    return '<li class="h5peditor-tab-li"><a href="#" class="h5peditor-tab-a h5peditor-tab-' + field.name.toLowerCase() + '" data-id="' + id + '">' +
+      '<span>Step ' + (id + 1) + '</span>' +
+      '<span class="field-name">' + field.label + '</span>' +
+    '</a></li>';
   };
-
+	
   return C;
 })(H5P.jQuery, H5P.EventDispatcher);
+
+// Default english translations
+H5PEditor.language['H5PEditor.Wizard'] = {
+  libraryStrings: {
+    previousStep: 'Previous Step',
+    nextStep: 'Next Step'
+  }
+};
