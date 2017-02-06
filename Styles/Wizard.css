@@ -100,6 +100,8 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   margin: 0;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons {
+  display: table;
+  width: 100%;
   background-color: #e3e3e3;
   margin-bottom: 20px;
 }
@@ -110,6 +112,25 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 }
 .field.wizard .h5peditor-wizard-navigation-buttons span {
   display: block;
+  vertical-align: middle;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons span:first-child {
+  font-style: italic;
+  color: #737373;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-icon {
+  display: table-cell;
+  padding: 10px;
+  vertical-align: middle;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-icon:before {
+  font-family: 'H5PFontAwesome4';
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-prev .nav-button-icon:before {
+  content: "\f104";
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-next .nav-button-icon:before {
+  content: "\f105";
 }
 .field.wizard .h5peditor-wizard-navigation-buttons > div {
   background: #fdfdfd;
@@ -117,9 +138,8 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   background: -o-linear-gradient(#fdfdfd, #f3f3f3);
   background: -moz-linear-gradient(#fdfdfd, #f3f3f3);
   background: linear-gradient(#fdfdfd, #f3f3f3);
-  border: 1px solid gray;
+  border: 1px solid #d0d0d1;
   border-radius: 5px;
-  padding: 10px 20px;
   margin: 10px 20px;
   cursor: pointer;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -129,12 +149,25 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
-.field.wizard .h5peditor-wizard-navigation-buttons > div span:first-child{
+.field.wizard .h5peditor-wizard-navigation-buttons > div div {
+  padding: 10px 20px;
+  display: table-cell;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons > div div span:first-child{
   font-size: 12px;
+}
+.field.wizard .h5peditor-wizard-navigation-buttons .nav-button-label:before {
+  font-family: 'H5PFontAwesome4';
 }
 .field.wizard .nav-button-prev {
   float: left;
 }
 .field.wizard .nav-button-next {
   float: right;
+}
+.field.wizard .nav-button-prev > div {
+  border-left: 1px solid #d0d0d1;
+}
+.field.wizard .nav-button-next > div {
+  border-right: 1px solid #d0d0d1;
 }

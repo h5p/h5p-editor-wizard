@@ -69,21 +69,25 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
     var $navButtonsWrapper = $('<div class="h5peditor-wizard-navigation-buttons"></div>').appendTo(this.$item);
     
     var $prevButton = $('<div class="nav-button-prev" data-id="0"></div>')
-      .append($('<span>' + C.t('previousStep') + '</span>'))
-      .append($('<span>' + this.field.fields[0].label + '</span>'))
-    .click(function () {
-      var currentTabId = $(this).attr('data-id');
-      that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
-    }).appendTo($navButtonsWrapper)
-      .hide();
+      .append($('<span class="nav-button-icon"></span>'))
+      .append($('<div/>')
+        .append($('<span>' + C.t('previousStep') + '</span>'))
+        .append($('<span class="nav-button-label">' + this.field.fields[0].label + '</span>')))
+      .click(function () {
+        var currentTabId = $(this).attr('data-id');
+        that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
+      }).appendTo($navButtonsWrapper)
+        .hide();
 
     var $nextButton = $('<div class="nav-button-next" data-id="1"></div>')
-      .append($('<span>' + C.t('nextStep') + '</span>'))
-      .append($('<span>' + this.field.fields[1].label + '</span>'))
-    .click(function () {
-      var currentTabId = $(this).attr('data-id');
-      that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
-    }).appendTo($navButtonsWrapper);
+      .append($('<div/>')
+        .append($('<span>' + C.t('nextStep') + '</span>'))
+        .append($('<span class="nav-button-label">' + this.field.fields[1].label + '</span>')))
+      .append($('<span class="nav-button-icon"></span>'))
+      .click(function () {
+        var currentTabId = $(this).attr('data-id');
+        that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
+      }).appendTo($navButtonsWrapper);
   };
 
   /**
