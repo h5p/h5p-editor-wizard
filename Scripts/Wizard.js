@@ -62,7 +62,6 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
       that.showTab($(this));
       return false;
     });
-    this.$tabs.eq(0).click();
 
     this.$panes.children('.h5peditor-label').hide();
 
@@ -88,6 +87,27 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
         var currentTabId = $(this).attr('data-id');
         that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
       }).appendTo($navButtonsWrapper);
+
+    this.$tabs.eq(0).click();
+
+  };
+
+  /**
+   * Update the wizard navigation icons
+   */
+  C.prototype.updateWizardIcons = function ($tab, id) {
+    if (this.$tabs.length > 0) {
+      if (parseInt(id) > 0) {
+        $('.nav-button-prev').find('.nav-button-label').attr('class', 'nav-button-label ' + this.$tabs.eq(parseInt(id) - 1).attr('class').split(' ').find(function (className) {
+          return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
+        }));
+      }
+      if (parseInt(id) < this.$tabs.length - 1) {
+        $('.nav-button-next').find('.nav-button-label').attr('class', 'nav-button-label ' + this.$tabs.eq(parseInt(id) + 1).attr('class').split(' ').find(function (className) {
+          return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
+        }));
+      }
+    }
   };
 
   /**
@@ -115,6 +135,8 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
     this.$panes.hide().eq(id).show();
     this.$tabs.removeClass('h5peditor-active');
     $tab.addClass('h5peditor-active');
+
+    this.updateWizardIcons($tab, id);
 
     // Give the poor child a chance to handle tab switching.
     if (this.children[id].setActive !== undefined) {

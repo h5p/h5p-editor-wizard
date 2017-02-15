@@ -25,22 +25,22 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   position: relative;
   background: #e3e3e3;
   margin-right: 1px;
-  padding: 13px 20px;
+  padding: 13px 15px;
   color: #737373;
 }
 .field.wizard .h5peditor-tab-a span {
   display: block;
-  padding-left: 40px;
+  padding-left: 45px;
   line-height: 20px;
 }
 .field.wizard .h5peditor-tab-a span:first-child {
   font-size: 12px;
 }
 .field.wizard .h5peditor-tab-a:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: 'h5pFontIcons';
   position: absolute;
   content: "?";
-  font-size: 25px;
+  font-size: 2em;
   line-height: 40px;
 }
 .field.wizard .h5peditor-tab-a:hover {
@@ -157,7 +157,12 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   font-size: 12px;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons .nav-button-label:before {
-  font-family: 'H5PFontAwesome4';
+  font-family: 'h5pFontIcons';
+  content: "?";
+  font-size: 1.4em;
+  padding-right: 0.5em;
+  top: 0.1em;
+  position: relative;
 }
 .field.wizard .nav-button-prev {
   float: left;
