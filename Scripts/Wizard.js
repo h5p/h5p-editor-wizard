@@ -97,14 +97,22 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
   C.prototype.updateWizardIcons = function ($tab, id) {
     if (this.$tabs.length > 0) {
       if (parseInt(id) > 0) {
-        this.$item.find('.nav-button-prev .nav-button-label').attr('class', 'nav-button-label ' + this.$tabs.eq(parseInt(id) - 1).attr('class').split(' ').find(function (className) {
-          return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
-        }));
+        var $prevTab = this.$tabs.eq(parseInt(id) - 1);
+        this.$item.find('.nav-button-prev .nav-button-label')
+          .attr('class', 'nav-button-label ' + $prevTab
+            .attr('class').split(' ').find(function (className) {
+              return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
+            })
+          ).text($prevTab.find('.field-name').text());
       }
       if (parseInt(id) < this.$tabs.length - 1) {
-        this.$item.find('.nav-button-next .nav-button-label').attr('class', 'nav-button-label ' + this.$tabs.eq(parseInt(id) + 1).attr('class').split(' ').find(function (className) {
-          return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
-        }));
+        var $nextTab = this.$tabs.eq(parseInt(id) + 1);
+        this.$item.find('.nav-button-next .nav-button-label')
+          .attr('class', 'nav-button-label ' + $nextTab
+            .attr('class').split(' ').find(function (className) {
+              return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
+            })
+          ).text($nextTab.find('.field-name').text());
       }
     }
   };
