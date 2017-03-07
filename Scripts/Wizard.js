@@ -89,7 +89,6 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
       }).appendTo($navButtonsWrapper);
 
     this.$tabs.eq(0).click();
-
   };
 
   /**
@@ -98,12 +97,12 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
   C.prototype.updateWizardIcons = function ($tab, id) {
     if (this.$tabs.length > 0) {
       if (parseInt(id) > 0) {
-        $('.nav-button-prev').find('.nav-button-label').attr('class', 'nav-button-label ' + this.$tabs.eq(parseInt(id) - 1).attr('class').split(' ').find(function (className) {
+        this.$item.find('.nav-button-prev .nav-button-label').attr('class', 'nav-button-label ' + this.$tabs.eq(parseInt(id) - 1).attr('class').split(' ').find(function (className) {
           return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
         }));
       }
       if (parseInt(id) < this.$tabs.length - 1) {
-        $('.nav-button-next').find('.nav-button-label').attr('class', 'nav-button-label ' + this.$tabs.eq(parseInt(id) + 1).attr('class').split(' ').find(function (className) {
+        this.$item.find('.nav-button-next .nav-button-label').attr('class', 'nav-button-label ' + this.$tabs.eq(parseInt(id) + 1).attr('class').split(' ').find(function (className) {
           return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
         }));
       }
