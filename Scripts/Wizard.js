@@ -117,6 +117,27 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
     }
   };
 
+  C.prototype.updateWizardIconsText = function (currentTabId) {
+    var $prevButton = this.$item.find('.nav-button-prev');
+    var $nextButton = this.$item.find('.nav-button-next');
+
+    if (currentTabId > 0) {
+      $prevButton.attr('data-id', currentTabId - 1);
+      $prevButton.show();
+    }
+    else {
+      $prevButton.hide();
+    }
+
+    if (currentTabId < this.$item.find('.h5peditor-tabs').children().length - 1) {
+      $nextButton.attr('data-id', currentTabId + 1);
+      $nextButton.show();
+    }
+    else {
+      $nextButton.hide();
+    }
+  };
+
   /**
    * Create HTML for the field.
    */
