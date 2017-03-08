@@ -31,10 +31,10 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 .field.wizard .h5peditor-tab-a span {
   display: block;
   padding-left: 45px;
-  line-height: 20px;
+  line-height: 1.5em;
 }
 .field.wizard .h5peditor-tab-a span:first-child {
-  font-size: 12px;
+  font-size: 0.6em;
   font-style: italic;
   color: #757575;
 }
@@ -43,7 +43,6 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   position: absolute;
   content: "?";
   font-size: 2em;
-  line-height: 40px;
 }
 .field.wizard .h5peditor-tab-a:hover {
   background: #eaeaea;
@@ -65,6 +64,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 .field.wizard .h5peditor-tab-a .field-name {
   font-weight: 600;
   font-size: 0.9em;
+  width: 100%;
 }
 .field.wizard .h5peditor-tab-li:first-child > .h5peditor-tab-a:before,
 .field.wizard .h5peditor-tab-li:last-child > .h5peditor-tab-a:after {
@@ -126,8 +126,10 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 }
 .field.wizard .h5peditor-wizard-navigation-buttons .nav-button-icon {
   display: table-cell;
-  padding: 10px;
+  padding: 0.5em 0.75em;
   vertical-align: middle;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons .nav-button-icon:before {
   font-family: 'H5PFontAwesome4';
@@ -160,22 +162,22 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   border-color: #999;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons > div div {
-  padding: 0.75em;
+  padding: 0.45em 0.7em;
   display: table-cell;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons > div div span:first-child {
   font-size: 0.625em;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons > div div .nav-button-label {
-  font-size: 0.917em;
+  font-size: 0.75em;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons .nav-button-label:before {
   font-family: 'h5pFontIcons';
   content: "?";
-  font-size: 1.4em;
+  font-size: 1.3em;
   color: #737373;
   padding-right: 0.1em;
-  top: 0.1em;
+  top: 0.075em;
   left: -0.1em;
   position: relative;
 }
