@@ -65,72 +65,70 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
 
     this.$panes.children('.h5peditor-label').hide();
 
-    var $navButtonsWrapper = $('<div class="h5peditor-wizard-navigation-buttons"></div>').appendTo(this.$item);
-    
-    var $prevButton = $('<div class="nav-button-prev" data-id="0"></div>')
-      .append($('<span class="nav-button-icon"></span>'))
-      .append($('<div/>')
-        .append($('<span>' + C.t('previousStep') + '</span>'))
-        .append($('<span class="nav-button-label">' + this.field.fields[0].label + '</span>')))
-      .click(function () {
-        var currentTabId = $(this).attr('data-id');
-        that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
-      }).appendTo($navButtonsWrapper)
-        .hide();
-
-    var $nextButton = $('<div class="nav-button-next" data-id="1"></div>')
-      .append($('<div/>')
-        .append($('<span>' + C.t('nextStep') + '</span>'))
-        .append($('<span class="nav-button-label">' + this.field.fields[1].label + '</span>')))
-      .append($('<span class="nav-button-icon"></span>'))
-      .click(function () {
-        var currentTabId = $(this).attr('data-id');
-        that.showTab(that.$item.find('ol > li > a[data-id=' + currentTabId + ']'));
-      }).appendTo($navButtonsWrapper);
-
+    // Make sure first tab is selected as default
     this.$tabs.eq(0).click();
+
+    // Create wizard navigation buttons and attach events
+    var $prevButton = this.$item.find('.nav-button-prev').click(function () {
+      var currentTabId = that.$item.find('.h5peditor-active').attr('data-id');
+      that.showTab(that.$item.find('ol > li > a').eq(parseInt(currentTabId) - 1));
+    });
+
+    var $nextButton = this.$item.find('.nav-button-next').click(function () {
+      var currentTabId = that.$item.find('.h5peditor-active').attr('data-id');
+      that.showTab(that.$item.find('ol > li > a').eq(parseInt(currentTabId) + 1));
+    });
+
+    // Create wizard navigation wrapper and attach buttons
+    var $navButtonsWrapper = $('<div class="h5peditor-wizard-navigation-buttons"></div>')
+      .append($prevButton)
+      .append($nextButton)
+      .appendTo(this.$item);
   };
 
   /**
-   * Update the wizard navigation icons
-   */
-  C.prototype.updateWizardIcons = function ($tab, id) {
-    if (this.$tabs.length > 0) {
-      if (parseInt(id) > 0) {
-        var $prevTab = this.$tabs.eq(parseInt(id) - 1);
-        this.$item.find('.nav-button-prev .nav-button-label')
-          .attr('class', 'nav-button-label ' + $prevTab
-            .attr('class').split(' ').find(function (className) {
-              return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
-            })
-          ).text($prevTab.find('.field-name').text());
-      }
-      if (parseInt(id) < this.$tabs.length - 1) {
-        var $nextTab = this.$tabs.eq(parseInt(id) + 1);
-        this.$item.find('.nav-button-next .nav-button-label')
-          .attr('class', 'nav-button-label ' + $nextTab
-            .attr('class').split(' ').find(function (className) {
-              return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
-            })
-          ).text($nextTab.find('.field-name').text());
-      }
-    }
-  };
+   * Update the wizard navigation
 
-  C.prototype.updateWizardIconsText = function (currentTabId) {
+   * @param {jQuery} $tab
+   * @param {String} currentTabId
+   */
+  C.prototype.updateWizardNavigation = function ($tab, currentTabId) {
+    var currentTabId = parseInt(currentTabId);
     var $prevButton = this.$item.find('.nav-button-prev');
     var $nextButton = this.$item.find('.nav-button-next');
 
+    // If there is a previous tab, update navigation prev button
     if (currentTabId > 0) {
-      $prevButton.attr('data-id', currentTabId - 1);
+      var $prevTab = this.$tabs.eq(currentTabId - 1);
+
+      // Get the specific classname of the previous tab to mimic icon for navigation button
+      var prevTabClasses = $prevTab.attr('class').split(' ').find(function (className) {
+        return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
+      });
+
+      this.$item.find('.nav-button-prev .nav-button-label')
+        .attr('class', 'nav-button-label ' + prevTabClasses)
+        .text($prevTab.find('.field-name').text());
+
       $prevButton.show();
     }
     else {
       $prevButton.hide();
     }
 
-    if (currentTabId < this.$item.find('.h5peditor-tabs').children().length - 1) {
-      $nextButton.attr('data-id', currentTabId + 1);
+    // If there is a next tab, update navigation next button
+    if (currentTabId < this.$tabs.length - 1) {
+      var $nextTab = this.$tabs.eq(currentTabId + 1);
+
+      // Get the specific classname of the next tab to mimic icon for navigation button
+      var nextTabClasses = $nextTab.attr('class').split(' ').find(function (className) {
+        return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
+      });
+
+      this.$item.find('.nav-button-next .nav-button-label')
+        .attr('class', 'nav-button-label ' + nextTabClasses)
+        .text($nextTab.find('.field-name').text());
+
       $nextButton.show();
     }
     else {
@@ -142,14 +140,31 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
    * Create HTML for the field.
    */
   C.prototype.createHtml = function () {
-    var tabs = '<ol class="h5peditor-tabs">';
+    // Create wizard tabs
+    var html = '<ol class="h5peditor-tabs">';
     for (var i = 0; i < this.field.fields.length; i++) {
       var field = this.field.fields[i];
-      tabs += C.createTab(i, field);
+      html += C.createTab(i, field);
     }
-    tabs += '</ol>';
+    html += '</ol>';
 
-    return H5PEditor.createFieldMarkup(this.field, tabs);
+    // Create wizard navigation buttons
+    html += '<div class="nav-button-prev">' +
+              '<span class="nav-button-icon"></span>' +
+              '<div>' +
+                '<span>' + C.t('previousStep') + '</span>' +
+                '<span class="nav-button-label">' + this.field.fields[0].label + '</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="nav-button-next">' +
+              '<div>' +
+                '<span>' + C.t('nextStep') + '</span>' +
+                '<span class="nav-button-label">' + this.field.fields[1].label + '</span>' +
+              '</div>' +
+              '<span class="nav-button-icon"></span>' +
+            '</div>';
+
+    return H5PEditor.createFieldMarkup(this.field, html);
   };
 
   /**
@@ -164,7 +179,8 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
     this.$tabs.removeClass('h5peditor-active');
     $tab.addClass('h5peditor-active');
 
-    this.updateWizardIcons($tab, id);
+    // Update wizard navigation to sync with tabs
+    this.updateWizardNavigation($tab, id);
 
     // Give the poor child a chance to handle tab switching.
     if (this.children[id].setActive !== undefined) {

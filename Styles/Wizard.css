@@ -143,17 +143,12 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 }
 .field.wizard .h5peditor-wizard-navigation-buttons > div {
   background: #fdfdfd;
-  background: -webkit-linear-gradient(#fdfdfd, #f3f3f3);
-  background: -o-linear-gradient(#fdfdfd, #f3f3f3);
-  background: -moz-linear-gradient(#fdfdfd, #f3f3f3);
   background: linear-gradient(#fdfdfd, #f3f3f3);
   border: 1px solid #d0d0d1;
   border-radius: 5px;
   margin: 0.5em;
   cursor: pointer;
-  -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
