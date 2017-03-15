@@ -93,7 +93,7 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
    * @param {String} currentTabId
    */
   C.prototype.updateWizardNavigation = function ($tab, currentTabId) {
-    var currentTabId = parseInt(currentTabId);
+    currentTabId = parseInt(currentTabId, 10);
     var $prevButton = this.$item.find('.nav-button-prev');
     var $nextButton = this.$item.find('.nav-button-next');
 
