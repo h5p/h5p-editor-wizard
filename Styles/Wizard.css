@@ -39,7 +39,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   color: #757575;
 }
 .field.wizard .h5peditor-tab-a:before {
-  font-family: 'h5pFontIcons';
+  font-family: 'H5PFontIcons';
   position: absolute;
   content: "?";
   font-size: 2em;
@@ -168,7 +168,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   font-size: 0.75em;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons .nav-button-label:before {
-  font-family: 'h5pFontIcons';
+  font-family: 'H5PFontIcons';
   content: "?";
   font-size: 1.3em;
   color: #737373;
