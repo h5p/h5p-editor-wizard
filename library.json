@@ -19,5 +19,12 @@
     {
       "path": "Styles/Wizard.css"
     }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.FontIcons",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
   ]
 }
