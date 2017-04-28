@@ -102,7 +102,6 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
       var $prevTab = this.$tabs.eq(currentTabId - 1);
 
       // Get the specific classname of the previous tab to mimic icon for navigation button
-      debugger;
       var prevTabClasses = $prevTab.attr('class').split(' ').filter(function (className) {
         return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
       })[0];
@@ -122,7 +121,6 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
       var $nextTab = this.$tabs.eq(currentTabId + 1);
 
       // Get the specific classname of the next tab to mimic icon for navigation button
-      debugger;
       var nextTabClasses = $nextTab.attr('class').split(' ').filter(function (className) {
         return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
       })[0];
