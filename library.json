@@ -1,8 +1,8 @@
 {
   "title": "H5PEditor.Wizard",
   "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 1,
+  "minorVersion": 2,
+  "patchVersion": 0,
   "runnable": 0,
   "machineName": "H5PEditor.Wizard",
   "author": "Frode Petterson",
@@ -18,6 +18,13 @@
   "preloadedCss": [
     {
       "path": "Styles/Wizard.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.FontIcons",
+      "majorVersion": 1,
+      "minorVersion": 0
     }
   ]
 }
