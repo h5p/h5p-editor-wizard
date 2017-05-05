@@ -102,9 +102,9 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
       var $prevTab = this.$tabs.eq(currentTabId - 1);
 
       // Get the specific classname of the previous tab to mimic icon for navigation button
-      var prevTabClasses = $prevTab.attr('class').split(' ').find(function (className) {
+      var prevTabClasses = $prevTab.attr('class').split(' ').filter(function (className) {
         return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
-      });
+      })[0];
 
       this.$item.find('.nav-button-prev .nav-button-label')
         .attr('class', 'nav-button-label ' + prevTabClasses)
@@ -121,9 +121,9 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
       var $nextTab = this.$tabs.eq(currentTabId + 1);
 
       // Get the specific classname of the next tab to mimic icon for navigation button
-      var nextTabClasses = $nextTab.attr('class').split(' ').find(function (className) {
+      var nextTabClasses = $nextTab.attr('class').split(' ').filter(function (className) {
         return (className.match(/h5peditor-tab-[a-zA-z]{2,}/i) !== null);
-      });
+      })[0];
 
       this.$item.find('.nav-button-next .nav-button-label')
         .attr('class', 'nav-button-label ' + nextTabClasses)
@@ -251,11 +251,11 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
    */
   C.createTab = function (id, field) {
     return '<li class="h5peditor-tab-li"><a href="#" class="h5peditor-tab-a h5peditor-tab-' + field.name.toLowerCase() + '" data-id="' + id + '">' +
-      '<span>Step ' + (id + 1) + '</span>' +
+      '<span>' + C.t('step', { ':index': id + 1 }) + '</span>' +
       '<span class="field-name">' + field.label + '</span>' +
     '</a></li>';
   };
-	
+
   return C;
 })(H5P.jQuery, H5P.EventDispatcher);
 
@@ -263,6 +263,7 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
 H5PEditor.language['H5PEditor.Wizard'] = {
   libraryStrings: {
     previousStep: 'Previous Step',
-    nextStep: 'Next Step'
+    nextStep: 'Next Step',
+    step: 'Step :index'
   }
 };
