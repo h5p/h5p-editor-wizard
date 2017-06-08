@@ -34,11 +34,17 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   padding-left: 45px;
   line-height: 1.5em;
 }
-.field.wizard .h5peditor-tab-a span:first-child {
+.field.wizard .h5peditor-tab-a .field-step {
   font-size: 0.6em;
   font-style: italic;
   color: #757575;
 }
+
+/* Make the step field white on guided tour */
+.field.wizard .h5peditor-tab-a.shepherd-enabled .field-step {
+  color: white;
+}
+
 .field.wizard .h5peditor-tab-a:before {
   font-family: 'H5PFontIcons';
   position: absolute;

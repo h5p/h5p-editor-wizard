@@ -251,7 +251,7 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
    */
   C.createTab = function (id, field) {
     return '<li class="h5peditor-tab-li"><a href="#" class="h5peditor-tab-a h5peditor-tab-' + field.name.toLowerCase() + '" data-id="' + id + '">' +
-      '<span>' + C.t('step', { ':index': id + 1 }) + '</span>' +
+      '<span class="field-step">' + C.t('step', { ':index': id + 1 }) + '</span>' +
       '<span class="field-name">' + field.label + '</span>' +
     '</a></li>';
   };
