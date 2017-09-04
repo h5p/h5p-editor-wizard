@@ -1,7 +1,7 @@
 {
-  "libraryStrings": {
-    "previousStep": "Forrige steg",
-    "nextStep": "Neste steg",
-    "step": "Steg :index"
+  "libraryStrings":{
+    "previousStep":"Forrige steg",
+    "nextStep":"Neste steg",
+    "step":"Steg :index"
   }
 }

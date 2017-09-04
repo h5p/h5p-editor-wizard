@@ -19,6 +19,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   padding: 0;
   position: relative;
   display: table-cell;
+  line-height: initial;
 }
 .field.wizard .h5peditor-tab-a {
   display: block;
@@ -33,11 +34,17 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   padding-left: 45px;
   line-height: 1.5em;
 }
-.field.wizard .h5peditor-tab-a span:first-child {
+.field.wizard .h5peditor-tab-a .field-step {
   font-size: 0.6em;
   font-style: italic;
   color: #757575;
 }
+
+/* Make the step field white on guided tour */
+.field.wizard .h5peditor-tab-a.shepherd-enabled .field-step {
+  color: white;
+}
+
 .field.wizard .h5peditor-tab-a:before {
   font-family: 'H5PFontIcons';
   position: absolute;
@@ -111,6 +118,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   background-color: #e3e3e3;
   margin-bottom: 20px;
   font-size: 17px;
+  line-height: initial;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons:after {
   clear: both;
