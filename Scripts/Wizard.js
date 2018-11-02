@@ -80,7 +80,7 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
     });
 
     // Create wizard navigation wrapper and attach buttons
-    var $navButtonsWrapper = $('<div class="h5peditor-wizard-navigation-buttons"></div>')
+    $('<div class="h5peditor-wizard-navigation-buttons"></div>')
       .append($prevButton)
       .append($nextButton)
       .appendTo(this.$item);
@@ -258,12 +258,3 @@ H5PEditor.widgets.wizard = H5PEditor.Wizard = (function ($, EventDispatcher) {
 
   return C;
 })(H5P.jQuery, H5P.EventDispatcher);
-
-// Default english translations
-H5PEditor.language['H5PEditor.Wizard'] = {
-  libraryStrings: {
-    previousStep: 'Previous Step',
-    nextStep: 'Next Step',
-    step: 'Step :index'
-  }
-};
