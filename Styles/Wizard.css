@@ -71,6 +71,9 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 .field.wizard .h5peditor-tab-a .field-name {
   font-weight: 600;
   font-size: 0.9em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .field.wizard .h5peditor-tab-li:first-child > .h5peditor-tab-a:before,
 .field.wizard .h5peditor-tab-li:last-child > .h5peditor-tab-a:after {
