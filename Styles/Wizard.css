@@ -28,6 +28,8 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   margin-right: 1px;
   padding: 11px 15px;
   color: #737373;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .field.wizard .h5peditor-tab-a span {
   display: block;
