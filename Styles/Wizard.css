@@ -30,7 +30,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   background: #e3e3e3;
   margin-right: 1px;
   padding: 11px 15px;
-  color: #737373;
+  color: #616161;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -42,7 +42,6 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 .field.wizard .h5peditor-tab-a .field-step {
   font-size: 0.6em;
   font-style: italic;
-  color: #757575;
 }
 
 /* Make the step field white on guided tour */
@@ -95,7 +94,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 .field.wizard .h5peditor-tab-a.h5peditor-active:before {
   border-top-color: #e8e8e8;
   border-bottom-color: #e8e8e8;
-  color: #3aa2ec;
+  color: #2579c6;
 }
 .field.wizard .h5peditor-tab-a.h5peditor-active:after {
   border-left-color: #e8e8e8;
@@ -137,7 +136,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
 }
 .field.wizard .h5peditor-wizard-navigation-buttons div div span:first-child {
   font-style: italic;
-  color: #757575;
+  color: #6B6B6B;
 }
 .field.wizard .h5peditor-wizard-navigation-buttons .nav-button-icon {
   display: table-cell;
@@ -185,7 +184,7 @@ ol.h5peditor-tabs > li.h5peditor-tab-li {
   font-family: 'H5PFontIcons';
   content: "?";
   font-size: 1.3em;
-  color: #737373;
+  color: #6B6B6B;
   padding-right: 0.1em;
   top: 0.075em;
   left: -0.1em;
