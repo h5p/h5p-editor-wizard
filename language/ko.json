@@ -2,6 +2,6 @@
   "libraryStrings": {
     "previousStep": "이전 단계",
     "nextStep": "다음 단계",
-    "step": "단계 :인덱스"
+    "step": "단계 :index"
   }
 }
